@@ -22,9 +22,13 @@ public class JsonParser {
 	
 	ArrayList<OrderBean> orders = new ArrayList<OrderBean>();
 	
+	
+	
+	
 	public void test() {
 		System.out.println(file.toString());
 	}
+	
 	
 	public String jsonFileRaw() {
 		
@@ -52,8 +56,9 @@ public class JsonParser {
 		
 		JSONArray ja = null;
 		
-		try {Reader reader = new FileReader("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.json");
+		try {
 			
+			Reader reader = new FileReader("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.json");
 			
 			JSONParser parser = new JSONParser();
 			

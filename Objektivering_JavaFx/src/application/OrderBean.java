@@ -81,6 +81,12 @@ public class OrderBean {
 	public void setTotal(String total) {
 		this.total = total;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderBean [orderDate=" + orderDate + ", region=" + region + ", rep1=" + rep1 + ", rep2=" + rep2
+				+ ", item=" + item + ", units=" + units + ", unitCost=" + unitCost + ", total=" + total + "]";
+	}
 	   
 	   
 }

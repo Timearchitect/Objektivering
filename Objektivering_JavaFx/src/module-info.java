@@ -5,6 +5,8 @@ module Objektivering_JavaFx {
 	requires javafx.base;
 	requires java.xml;
 	requires json.simple;
+	requires commons.csv;
+	requires com.opencsv;
 	
 	opens application to javafx.graphics, javafx.fxml;
 }

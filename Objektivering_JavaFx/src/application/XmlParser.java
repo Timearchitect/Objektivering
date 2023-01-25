@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,15 +20,19 @@ import org.xml.sax.SAXException;
 public class XmlParser {
 	
 	
-	public void xmlBuilder() {
+	public ArrayList<OrderBean> xmlBuilder() {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		
+		ArrayList<OrderBean> orderList = new ArrayList<OrderBean>();
+		
+		OrderBean currentOrder = null;
 		
 		try {
 			
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			
-			Document doc = builder.parse("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.xml");
+			Document doc = builder.parse(new File("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.xml"));
 			
 			doc.getDocumentElement().normalize();
 			
@@ -52,8 +57,20 @@ public class XmlParser {
 
 						Element dataElement = (Element) data;
 						
-						System.out.println(dataElement.getAttribute("OrderDate"));
+						// System.out.println("	" + dataElement.getTagName() + ": " + dataElement.getTextContent());
 						
+						 currentOrder = new OrderBean(
+								 dataElement.getTextContent(),
+								 dataElement.getTextContent(),
+								 dataElement.getTextContent(),
+								 dataElement.getTextContent(),
+								 dataElement.getTextContent(),
+								 Long.parseLong(dataElement.getTextContent()),
+								 dataElement.getTextContent(),
+								 dataElement.getTextContent());
+						
+						 orderList.add(currentOrder);
+						 
 					} 
 					
 					
@@ -73,6 +90,8 @@ public class XmlParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return orderList;
 		
 		
 	}
