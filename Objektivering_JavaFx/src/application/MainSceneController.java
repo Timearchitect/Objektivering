@@ -28,7 +28,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class MainSceneController  implements Initializable {
+public class MainSceneController implements Initializable {
 
 	@FXML
 	private TableView<OrderBean> table;
@@ -79,33 +79,81 @@ public class MainSceneController  implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-		TableColumn orderdate = new TableColumn("OrderDate");
-		orderdate.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("OrderDate"));
-
-		TableColumn region = new TableColumn("Region"); 
-		region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
+		//table.getColumns().clear();
+//		TableColumn<OrderBean,String> Orderdate = new TableColumn<>("OrderDate");
+//		Orderdate.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("OrderDate"));
+//		table.getColumns().add(Orderdate);
+//		
+//		TableColumn<OrderBean,String> Region = new TableColumn<>("Region"); 
+//		Region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
+//		table.getColumns().add(Region);
+//
+//		
+//		TableColumn<OrderBean,String> Rep1 = new TableColumn<>("Rep1");
+//		Rep1.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Rep1"));
+//		table.getColumns().add(Rep1);
+//
+//		TableColumn<OrderBean,String> Rep2= new TableColumn<>("Rep2"); 
+//		Rep2.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Rep2"));
+//		table.getColumns().add(Rep2);
+//		
+//		TableColumn<OrderBean,String> Item = new TableColumn<>("Item");
+//		Item.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Item"));
+//		table.getColumns().add(Item);
+//		
+//		TableColumn<OrderBean,String> Units= new TableColumn<>("Units"); 
+//		Units.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Units"));
+//		table.getColumns().add(Units);
+//		
+//		TableColumn<OrderBean,String> Total= new TableColumn<>("Total"); 
+//		Total.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Total"));
+//		table.getColumns().add(Total);
+		
+		
+//		orderDate.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("OrderDate"));
+//		region.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Region"));
+//		rep1.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Rep1"));
+//		rep2.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Rep2"));
+//		item.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Item"));
+//		units.setCellValueFactory(   new PropertyValueFactory<OrderBean, Long>("Units"));
+//		total.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Total"));
+		
+		//table.getColumns().addAll(Orderdate,Region,Rep1,Rep2,Item,Units,Total);
         //add your data to the table here.
-        table.setItems(data);		
-        
+		//table.getItems().add( new OrderBean("test", "test", "test", "test", "test", (long) 5, "test", "test"));		
+
+		table.setItems(data);		
+
+		System.out.println("INIT finished");
+
 	}
 	
 	public void parseJson() {		
+		System.out.println(table.getHeight());
 
 		int size= jsonList.size();
 				System.out.println(size);
-				table.getColumns().clear();
+				//table.getColumns().clear();  //clear all columns
+				//table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("OrderDate"));
+			
+
+				
 				//System.out.println(table.getColumns());
 				TableColumn orderdate = new TableColumn("OrderDate");
-				orderdate.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("OrderDate"));
-
-				TableColumn region = new TableColumn("Region"); 
-				region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
-
+				PropertyValueFactory pf =new PropertyValueFactory<OrderBean,String>("OrderDate");
+				System.out.println( pf.getProperty() );
+				
+				table.getItems().add(new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"));
+				orderdate.setCellValueFactory( pf );
+//				TableColumn region = new TableColumn("Region"); 
+//				region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
 				
 				//table.setItems(data);
 		
-				table.getColumns().addAll(orderdate,region );
-				
+				//table.getColumns().addAll(orderdate,region );
+				//			table.getColumns().addAll(orderdate,region );
+
+
 	        //table.setItems(data);
 
 				

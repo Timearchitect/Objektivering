@@ -4,51 +4,52 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class OrderBean {
-	private final SimpleStringProperty  orderDate;
-	private final SimpleStringProperty  region;
-	private final SimpleStringProperty  rep1;
-	private final SimpleStringProperty  rep2;
-	private final SimpleStringProperty  item;
-	private final SimpleLongProperty units;
-	private final SimpleStringProperty  unitCost;
-	private final SimpleStringProperty  total;
-//	private String orderDate;
-//	private String region;
-//	private String rep1;
-//	private String rep2;
-//	private String item;
-//	private Long units;
-//	private String unitCost;
-//	private String total;
+	private final SimpleStringProperty  OrderDate;
+	private final SimpleStringProperty  Region;
+	private final SimpleStringProperty  Rep1;
+	private final SimpleStringProperty  Rep2;
+	private final SimpleStringProperty  Item;
+	private final SimpleLongProperty Units;
+	private final SimpleStringProperty  UnitCost;
+	private final SimpleStringProperty  Total;
+//	private String OrderDate;
+//	private String Region;
+//	private String Rep1;
+//	private String Rep2;
+//	private String Item;
+//	private Long Units;
+//	private String UnitCost;
+//	private String Total;
 	   
 	public OrderBean(
-			String orderDate,
-			String region,
-			String rep1,
-			String rep2,
-			String item,
-			Long units,
-			String unitCost,
-			String total) 
+			String OrderDate,
+			String Region,
+			String Rep1,
+			String Rep2,
+			String Item,
+			Long Units,
+			String UnitCost,
+			String Total) 
 	{
 		
 		super();
 		
-		this.orderDate  = new SimpleStringProperty(orderDate);
-		this.region = new SimpleStringProperty(region);
-		this.rep1 = new SimpleStringProperty(rep1);
-		this.rep2 = new SimpleStringProperty(rep2);
-		this.item = new SimpleStringProperty(item);
-		this.units = new SimpleLongProperty(units);
-		this.unitCost = new SimpleStringProperty(unitCost);
-		this.total =new SimpleStringProperty(total);
-//		this.region = region;
-//		this.rep1 = rep1;
-//		this.rep2 = rep2;
-//		this.item = item;
-//		this.units = units;
-//		this.unitCost = unitCost;
-//		this.total = total;
+		this.OrderDate  = new SimpleStringProperty(this,OrderDate);
+		this.Region = new SimpleStringProperty(this,Region);
+		this.Rep1 = new SimpleStringProperty(this,Rep1);
+		this.Rep2 = new SimpleStringProperty(this,Rep2);
+		this.Item = new SimpleStringProperty(this,Item);
+		this.Units = new SimpleLongProperty(Units);
+		this.UnitCost = new SimpleStringProperty(this,UnitCost);
+		this.Total =new SimpleStringProperty(this,Total);
+//		this.OrderDate = OrderDate;
+//		this.Region = Region;
+//		this.Rep1 = Rep1;
+//		this.Rep2 = Rep2;
+//		this.Item = Item;
+//		this.Units = Units;
+//		this.UnitCost = UnitCost;
+//		this.Total = Total;
 	}	
 //	
 //	public SimpleStringProperty getOrderDate() {
@@ -99,54 +100,104 @@ public class OrderBean {
 //	public void setTotal(SimpleStringProperty total) {
 //		this.total = total;
 //	}
+	
 	public String getOrderDate() {
-		return orderDate.get();
+		return OrderDate.get();
 	}
 	public void setOrderDate(String orderDate) {
-		this.orderDate.set(orderDate);
+		this.OrderDate.set(orderDate);
 	}
 	public String getRegion() {
-		return region.get();
+		return Region.get();
 	}
 	public void setRegion(String region) {
-		this.region.set(region);
+		this.Region.set(region);
 	}
 	public String getRep1() {
-		return rep1.get();
+		return Rep1.get();
 	}
 	public void setRep1(String rep1) {
-		this.rep1.set(rep1);
+		this.Rep1.set(rep1);
 	}
 	public String getRep2() {
-		return rep2.get();
+		return Rep2.get();
 	}
 	public void setRep2(String rep2) {
-		this.rep2.set(rep2);
+		this.Rep2.set(rep2);
 	}
 	public String getItem() {
-		return item.get();
+		return Item.get();
 	}
 	public void setItem(String item) {
-	this.item.set(item);	
+		this.Item.set(item);	
 	}
 	public Long getUnits() {
-		return units.get();
+		return Units.get();
 	}
 	public void setUnits(Long units) {
-		this.units.set(units);
+		this.Units.set(units);
 	}
 	public String getUnitCost() {
-		return unitCost.get();
+		return UnitCost.get();
 	}
 	public void setUnitCost(String unitCost) {
-		this.unitCost.set(unitCost);
+		this.UnitCost.set(unitCost);
 	}
 	public String getTotal() {
-		return total.get();
+		return Total.get();
 	}
 	public void setTotal(String total) {
-		this.total.set(total);
+		this.Total.set(total);
 	}
+	
+//	public String getOrderDate() {
+//		return OrderDate;
+//	}
+//	public void setOrderDate(String orderDate) {
+//		this.OrderDate=orderDate;
+//	}
+//	public String getRegion() {
+//		return Region;
+//	}
+//	public void setRegion(String region) {
+//		this.Region=region;
+//	}
+//	public String getRep1() {
+//		return Rep1;
+//	}
+//	public void setRep1(String rep1) {
+//		this.Rep1=rep1;
+//	}
+//	public String getRep2() {
+//		return Rep2;
+//	}
+//	public void setRep2(String rep2) {
+//		this.Rep2=rep2;
+//	}
+//	public String getItem() {
+//		return Item;
+//	}
+//	public void setItem(String item) {
+//		this.Item=item;	
+//	}
+//	public Long getUnits() {
+//		return Units;
+//	}
+//	public void setUnits(Long units) {
+//		this.Units=units;
+//	}
+//	public String getUnitCost() {
+//		return UnitCost;
+//	}
+//	public void setUnitCost(String unitCost) {
+//		this.UnitCost=unitCost;
+//	}
+//	public String getTotal() {
+//		return Total;
+//	}
+//	public void setTotal(String total) {
+//		this.Total=total;
+//	}
 //}
 //public String getOrderDate() {
 //	return orderDate;
