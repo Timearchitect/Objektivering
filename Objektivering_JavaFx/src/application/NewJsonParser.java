@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class NewJsonParser {
 	
-	File file = new File("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.json");
+//	File file = new File("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.json");
+	File file = new File("src/application/sample.json");
 	Scanner sc;
 	
 	public ArrayList<String> orderDates() {
@@ -21,7 +22,6 @@ public class NewJsonParser {
 				
 				ArrayList<String> row = new ArrayList<String>();
 				row.add(sc.nextLine());
-				
 				for(var order : row) {
 					
 					if(order.contains("\"OrderDate\": \"")) {

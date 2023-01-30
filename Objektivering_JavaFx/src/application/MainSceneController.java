@@ -3,14 +3,17 @@ package application;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +28,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class MainSceneController {
+public class MainSceneController  implements Initializable {
 
 	@FXML
 	private TableView<OrderBean> table;
@@ -46,32 +49,87 @@ public class MainSceneController {
 	@FXML
 	private TableColumn<OrderBean, String> total;
 	
-	
+
 	JsonParser jsonParser = new JsonParser();
 	
 	ObservableList<OrderBean> jsonList = FXCollections.observableArrayList(jsonParser.parsJson());
+
+	public final ObservableList<OrderBean> data = FXCollections.observableArrayList(
+		    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"),
+		    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00")
+		);
 	
+	/*@FXML
+	private void initialize() {
+		 final ObservableList<OrderBean> data = FXCollections.observableArrayList(
+			    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"),
+			    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00")
+			);
+		table.getColumns().clear();
+		TableColumn orderdate = new TableColumn("OrderDate");
+		orderdate.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("OrderDate"));
 
-	public void parseJson() {		
+		TableColumn region = new TableColumn("Region"); 
+		region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
+
+		table.setItems(data);
+		table.getColumns().addAll(orderdate,region );		
 		
-		for (int i = 0; i < jsonParser.parsJson().size(); i++) {
+	}*/
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+        //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
+		TableColumn orderdate = new TableColumn("OrderDate");
+		orderdate.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("OrderDate"));
 
-			System.out.println(i);
-			
-			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getOrderDate()));
-			region.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRegion()));
-			rep1.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep1()));
-			rep2.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep2()));
-			item.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getItem()));
-			units.setCellValueFactory(new PropertyValueFactory<OrderBean, Long>(jsonParser.parsJson().get(i).getUnits().toString()));
-			unitCost.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getUnitCost()));
-			total.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getTotal()));
-			
-			
-			
-		}
+		TableColumn region = new TableColumn("Region"); 
+		region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
+        //add your data to the table here.
+        table.setItems(data);		
+        
+	}
+	
+	public void parseJson() {		
+
+		int size= jsonList.size();
+				System.out.println(size);
+				table.getColumns().clear();
+				//System.out.println(table.getColumns());
+				TableColumn orderdate = new TableColumn("OrderDate");
+				orderdate.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("OrderDate"));
+
+				TableColumn region = new TableColumn("Region"); 
+				region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
+
+				
+				//table.setItems(data);
+		
+				table.getColumns().addAll(orderdate,region );
+				
+	        //table.setItems(data);
+
+				
+//		for (int i = 0; i < jsonParser.parsJson().size(); i++) {
+//
+//			System.out.println(i);
+//			jsonParser.parsJson().get(i).getOrderDate();
+//			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(null  ));
+//			
+//			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getOrderDate()));
+//			region.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRegion()));
+//			rep1.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep1()));
+//			rep2.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep2()));
+//			item.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getItem()));
+//			units.setCellValueFactory(new PropertyValueFactory<OrderBean, Long>(jsonParser.parsJson().get(i).getUnits().toString()));
+//			unitCost.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getUnitCost()));
+//			total.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getTotal()));
+//			
+//			
+//			
+//		}
 
 	}
+
 
 //	public void test() throws FileNotFoundException {
 //		

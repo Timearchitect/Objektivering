@@ -23,11 +23,13 @@ public class XmlParser {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		
+
 		try {
 			
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			
-			Document doc = builder.parse("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.xml");
+//			Document doc = builder.parse("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.xml");
+			Document doc = builder.parse("src/application/sample.xml");
 			
 			doc.getDocumentElement().normalize();
 			
@@ -39,32 +41,31 @@ public class XmlParser {
 				
 				
 				if (row.getNodeType() == Node.ELEMENT_NODE) {
-				
-				Element rowElement = (Element) row;
-				
-				NodeList rowData = row.getChildNodes();
-				
-				for (int j = 0; j < rowData.getLength(); j++) {
 					
-					Node data = rowData.item(j);
+					Element rowElement = (Element) row;
 					
-					if (data.getNodeType() == Node.ELEMENT_NODE) {
-
-						Element dataElement = (Element) data;
+					NodeList rowData = row.getChildNodes();
+					
+					for (int j = 0; j < rowData.getLength(); j++) {
 						
-						System.out.println(dataElement.getAttribute("OrderDate"));
+						Node data = rowData.item(j);
 						
-					} 
+						if (data.getNodeType() == Node.ELEMENT_NODE) {
+							
+							Element dataElement = (Element) data;
+							
+							System.out.println(dataElement.getAttribute("OrderDate"));
+							
+						} 
+						
+						
+					}
 					
 					
-				}
-					
-		
 				}
 			}
 			
 		} catch (ParserConfigurationException e) {
-
 			e.printStackTrace();
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
