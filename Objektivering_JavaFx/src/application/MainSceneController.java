@@ -54,10 +54,10 @@ public class MainSceneController implements Initializable {
 	
 	ObservableList<OrderBean> jsonList = FXCollections.observableArrayList(jsonParser.parsJson());
 
-	public final ObservableList<OrderBean> data = FXCollections.observableArrayList(
-		    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"),
-		    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00")
-		);
+//	public final ObservableList<OrderBean> data = FXCollections.observableArrayList(
+//		    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"),
+//		    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00")
+//		);
 	
 	/*@FXML
 	private void initialize() {
@@ -76,6 +76,15 @@ public class MainSceneController implements Initializable {
 		table.getColumns().addAll(orderdate,region );		
 		
 	}*/
+	
+	public ObservableList<OrderBean> getBeans() {
+		final ObservableList<OrderBean> beans = FXCollections.observableArrayList();
+		beans.add(    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"));
+		beans.add(    new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"));
+
+		return beans;
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
@@ -110,19 +119,16 @@ public class MainSceneController implements Initializable {
 //		table.getColumns().add(Total);
 		
 		
-//		orderDate.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("OrderDate"));
-//		region.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Region"));
-//		rep1.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Rep1"));
-//		rep2.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Rep2"));
-//		item.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Item"));
-//		units.setCellValueFactory(   new PropertyValueFactory<OrderBean, Long>("Units"));
-//		total.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Total"));
-		
-		//table.getColumns().addAll(Orderdate,Region,Rep1,Rep2,Item,Units,Total);
-        //add your data to the table here.
-		//table.getItems().add( new OrderBean("test", "test", "test", "test", "test", (long) 5, "test", "test"));		
+		orderDate.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("orderDate"));
+		region.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Region"));
+		rep1.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Rep1"));
+		rep2.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Rep2"));
+		item.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Item"));
+		units.setCellValueFactory(   new PropertyValueFactory<OrderBean, Long>("Units"));
+		unitCost.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("UnitCost"));
+		total.setCellValueFactory(   new PropertyValueFactory<OrderBean, String>("Total"));
 
-		table.setItems(data);		
+	
 
 		System.out.println("INIT finished");
 
@@ -132,19 +138,19 @@ public class MainSceneController implements Initializable {
 		System.out.println(table.getHeight());
 
 		int size= jsonList.size();
-				System.out.println(size);
-				//table.getColumns().clear();  //clear all columns
+				//System.out.println(size);
+				table.getItems().clear();  //clear all items
 				//table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("OrderDate"));
 			
 
 				
 				//System.out.println(table.getColumns());
-				TableColumn orderdate = new TableColumn("OrderDate");
-				PropertyValueFactory pf =new PropertyValueFactory<OrderBean,String>("OrderDate");
-				System.out.println( pf.getProperty() );
+				//TableColumn orderdate = new TableColumn("OrderDate");
+				//PropertyValueFactory pf =new PropertyValueFactory<OrderBean,String>("OrderDate");
+				//System.out.println( pf.getProperty() );
 				
-				table.getItems().add(new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"));
-				orderdate.setCellValueFactory( pf );
+			//	table.getItems().add(new OrderBean("Jacob", "Smith", "jacob.smith@example.com", "Binder", "genshin", (long) 7, "20.39", "140.33.00"));
+				//orderdate.setCellValueFactory( pf );
 //				TableColumn region = new TableColumn("Region"); 
 //				region.setCellValueFactory(   new PropertyValueFactory<OrderBean,String>("Region"));
 				
@@ -157,9 +163,18 @@ public class MainSceneController implements Initializable {
 	        //table.setItems(data);
 
 				
-//		for (int i = 0; i < jsonParser.parsJson().size(); i++) {
-//
-//			System.out.println(i);
+		for (int i = 0; i < jsonParser.parsJson().size(); i++) {
+			table.getItems().add(new OrderBean(
+					jsonParser.parsJson().get(i).getOrderDate(),
+					jsonParser.parsJson().get(i).getRegion(),
+					jsonParser.parsJson().get(i).getRep1(), 
+					jsonParser.parsJson().get(i).getRep2(),
+					jsonParser.parsJson().get(i).getItem(), 
+					jsonParser.parsJson().get(i).getUnits(),
+					jsonParser.parsJson().get(i).getUnitCost(), 
+					jsonParser.parsJson().get(i).getTotal()));
+
+			//System.out.println(i);
 //			jsonParser.parsJson().get(i).getOrderDate();
 //			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(null  ));
 //			
@@ -173,8 +188,8 @@ public class MainSceneController implements Initializable {
 //			total.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getTotal()));
 //			
 //			
-//			
-//		}
+			
+		}
 
 	}
 

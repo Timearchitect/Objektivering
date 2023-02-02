@@ -4,14 +4,15 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class OrderBean {
-	private final SimpleStringProperty  OrderDate;
-	private final SimpleStringProperty  Region;
-	private final SimpleStringProperty  Rep1;
-	private final SimpleStringProperty  Rep2;
-	private final SimpleStringProperty  Item;
-	private final SimpleLongProperty Units;
-	private final SimpleStringProperty  UnitCost;
-	private final SimpleStringProperty  Total;
+	private final SimpleStringProperty  orderDate;
+	private final SimpleStringProperty  region;
+	private final SimpleStringProperty  rep1;
+	private final SimpleStringProperty  rep2;
+	private final SimpleStringProperty  item;
+	private final SimpleLongProperty units;
+	private final SimpleStringProperty  unitCost;
+	private final SimpleStringProperty  total;
+	
 //	private String OrderDate;
 //	private String Region;
 //	private String Rep1;
@@ -22,26 +23,27 @@ public class OrderBean {
 //	private String Total;
 	   
 	public OrderBean(
-			String OrderDate,
-			String Region,
-			String Rep1,
-			String Rep2,
-			String Item,
-			Long Units,
-			String UnitCost,
-			String Total) 
+			String orderDate,
+			String region,
+			String rep1,
+			String rep2,
+			String item,
+			Long units,
+			String unitCost,
+			String total
+			) 
 	{
 		
 		super();
 		
-		this.OrderDate  = new SimpleStringProperty(this,OrderDate);
-		this.Region = new SimpleStringProperty(this,Region);
-		this.Rep1 = new SimpleStringProperty(this,Rep1);
-		this.Rep2 = new SimpleStringProperty(this,Rep2);
-		this.Item = new SimpleStringProperty(this,Item);
-		this.Units = new SimpleLongProperty(Units);
-		this.UnitCost = new SimpleStringProperty(this,UnitCost);
-		this.Total =new SimpleStringProperty(this,Total);
+		this.orderDate  = new SimpleStringProperty(orderDate);
+		this.region = new SimpleStringProperty(region);
+		this.rep1 = new SimpleStringProperty(rep1);
+		this.rep2 = new SimpleStringProperty(rep2);
+		this.item = new SimpleStringProperty(item);
+		this.units = new SimpleLongProperty(units);
+		this.unitCost = new SimpleStringProperty(unitCost);
+		this.total =new SimpleStringProperty(total);
 //		this.OrderDate = OrderDate;
 //		this.Region = Region;
 //		this.Rep1 = Rep1;
@@ -102,52 +104,52 @@ public class OrderBean {
 //	}
 	
 	public String getOrderDate() {
-		return OrderDate.get();
+		return orderDate.get();
 	}
 	public void setOrderDate(String orderDate) {
-		this.OrderDate.set(orderDate);
+		this.orderDate.set(orderDate);
 	}
 	public String getRegion() {
-		return Region.get();
+		return region.get();
 	}
 	public void setRegion(String region) {
-		this.Region.set(region);
+		this.region.set(region);
 	}
 	public String getRep1() {
-		return Rep1.get();
+		return rep1.get();
 	}
 	public void setRep1(String rep1) {
-		this.Rep1.set(rep1);
+		this.rep1.set(rep1);
 	}
 	public String getRep2() {
-		return Rep2.get();
+		return rep2.get();
 	}
 	public void setRep2(String rep2) {
-		this.Rep2.set(rep2);
+		this.rep2.set(rep2);
 	}
 	public String getItem() {
-		return Item.get();
+		return item.get();
 	}
 	public void setItem(String item) {
-		this.Item.set(item);	
+		this.item.set(item);	
 	}
 	public Long getUnits() {
-		return Units.get();
+		return units.get();
 	}
 	public void setUnits(Long units) {
-		this.Units.set(units);
+		this.units.set(units);
 	}
 	public String getUnitCost() {
-		return UnitCost.get();
+		return unitCost.get();
 	}
 	public void setUnitCost(String unitCost) {
-		this.UnitCost.set(unitCost);
+		this.unitCost.set(unitCost);
 	}
 	public String getTotal() {
-		return Total.get();
+		return total.get();
 	}
 	public void setTotal(String total) {
-		this.Total.set(total);
+		this.total.set(total);
 	}
 	
 //	public String getOrderDate() {

@@ -14,14 +14,14 @@
       <Button fx:id="testBtn" layoutX="740.0" layoutY="21.0" mnemonicParsing="false" text="test" />
       <TableView fx:id="table" layoutX="7.0" layoutY="61.0" prefHeight="357.0" prefWidth="777.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="OrderDate" id="OrderDate" />
-          <TableColumn prefWidth="75.0" text="Region" id="Region"/>
-          <TableColumn prefWidth="75.0" text="Rep1" id="Rep1"/>
-          <TableColumn prefWidth="75.0" text="Rep2" id="Rep2"/>
-          <TableColumn prefWidth="75.0" text="item" id="item"/>
-          <TableColumn prefWidth="75.0" text="units" id="units"/>
-          <TableColumn prefWidth="75.0" text="unitCost" id="unitCost"/>
-          <TableColumn prefWidth="75.0" text="total" id="total"/>
+          <TableColumn fx:id="orderDate" prefWidth="75.0" text="OrderDate" />
+          <TableColumn fx:id="region" prefWidth="75.0" text="Region" />
+          <TableColumn fx:id="rep1" prefWidth="75.0" text="Rep1" />
+          <TableColumn fx:id="rep2" prefWidth="75.0" text="Rep2" />
+          <TableColumn fx:id="item" prefWidth="75.0" text="Item" />
+          <TableColumn fx:id="units" prefWidth="75.0" text="Units" />
+          <TableColumn fx:id="unitCost" prefWidth="75.0" text="UnitCost" />
+          <TableColumn fx:id="total" prefWidth="75.0" text="Total" />
         </columns>
       </TableView>
    </children>

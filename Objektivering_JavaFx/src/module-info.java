@@ -7,4 +7,5 @@ module Objektivering_JavaFx {
 	requires json.simple;
 	
 	opens application to javafx.graphics, javafx.fxml;
+    exports application; //<--- Missade denna
 }

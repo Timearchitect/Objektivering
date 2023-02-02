@@ -83,7 +83,8 @@ public class JsonParser {
 						(String)jo.get("Item"),
 						(Long)jo.get("Units"),
 						(String)jo.get("UnitCost"),
-						(String)jo.get("Total"));
+						(String)jo.get("Total")
+				);
 				System.out.println(currentOrder.getOrderDate());
 				orderList.add(currentOrder);
 			}
