@@ -17,7 +17,8 @@ import org.json.simple.parser.ParseException;
 
 public class JsonParser {
 
-	File file = new File("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.json");
+	File file = new File("src/application/sample.json");
+	
 	Scanner sc;
 	
 	ArrayList<OrderBean> orders = new ArrayList<OrderBean>();
@@ -26,6 +27,7 @@ public class JsonParser {
 	
 	
 	public void test() {
+		
 		System.out.println(file.toString());
 	}
 	
@@ -58,7 +60,7 @@ public class JsonParser {
 		
 		try {
 			
-			Reader reader = new FileReader("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.json");
+			Reader reader = new FileReader("src/application/sample.json");
 			
 			JSONParser parser = new JSONParser();
 			
@@ -82,6 +84,7 @@ public class JsonParser {
 						(String)jo.get("UnitCost"),
 						(String)jo.get("Total"));
 				
+				System.out.println(currentOrder.getOrderDate());
 				orderList.add(currentOrder);
 			}
 			

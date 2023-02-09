@@ -46,31 +46,45 @@ public class MainSceneController {
 	ObservableList<OrderBean> jsonList = FXCollections.observableArrayList(jsonParser.parsJson());
 	
 
-	public void parseJson() {		
+	public void parseJson() {
+		
+		System.out.println(table.getHeight());
+		
+		int size = jsonList.size();
+		
+		table.getItems().clear();
 		
 		for (int i = 0; i < jsonParser.parsJson().size(); i++) {
 
-			System.out.println(i);
+			table.getItems().add(new OrderBean(
+					jsonParser.parsJson().get(i).getOrderDate(),
+					jsonParser.parsJson().get(i).getRegion(),
+					jsonParser.parsJson().get(i).getRep1(),
+					jsonParser.parsJson().get(i).getRep2(),
+					jsonParser.parsJson().get(i).getItem(),
+					jsonParser.parsJson().get(i).getUnits(),
+					jsonParser.parsJson().get(i).getUnitCost(),
+					jsonParser.parsJson().get(i).getTotal()));
 			
-			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getOrderDate()));
-			region.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRegion()));
-			rep1.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep1()));
-			rep2.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep2()));
-			item.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getItem()));
-			units.setCellValueFactory(new PropertyValueFactory<OrderBean, Long>(jsonParser.parsJson().get(i).getUnits().toString()));
-			unitCost.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getUnitCost()));
-			total.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getTotal()));
-			
-			table.getColumns().add(orderDate);
-			table.getColumns().add(region);
-			table.getColumns().add(rep1);
-			table.getColumns().add(rep2);
-			table.getColumns().add(item);
-			table.getColumns().add(units);
-			table.getColumns().add(unitCost);
-			table.getColumns().add(total);
-			
-			table.getItems().add(i, jsonParser.parsJson().get(i));
+//			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getOrderDate()));
+//			region.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRegion()));
+//			rep1.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep1()));
+//			rep2.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep2()));
+//			item.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getItem()));
+//			units.setCellValueFactory(new PropertyValueFactory<OrderBean, Long>(jsonParser.parsJson().get(i).getUnits().toString()));
+//			unitCost.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getUnitCost()));
+//			total.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getTotal()));
+//			
+//			table.getColumns().add(orderDate);
+//			table.getColumns().add(region);
+//			table.getColumns().add(rep1);
+//			table.getColumns().add(rep2);
+//			table.getColumns().add(item);
+//			table.getColumns().add(units);
+//			table.getColumns().add(unitCost);
+//			table.getColumns().add(total);
+//			
+//			table.getItems().add(i, jsonParser.parsJson().get(i));
 			
 		}
 

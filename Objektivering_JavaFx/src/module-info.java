@@ -9,4 +9,5 @@ module Objektivering_JavaFx {
 	requires com.opencsv;
 	
 	opens application to javafx.graphics, javafx.fxml;
+	exports application;
 }
