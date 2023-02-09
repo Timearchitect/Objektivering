@@ -16,8 +16,7 @@ import org.xml.sax.SAXException;
 
 public class XmlParser {
 	
-	
-	public ArrayList<OrderBean> parseXml() {
+	public ArrayList<OrderBean> parseXml(String filePath) {
 		
 		ArrayList<OrderBean> orderList = new ArrayList<OrderBean>();
 		
@@ -25,7 +24,7 @@ public class XmlParser {
 			
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(new File("src/application/sample.xml"));
+			Document doc = builder.parse(new File(filePath));
 			
 			doc.getDocumentElement().normalize();
 			

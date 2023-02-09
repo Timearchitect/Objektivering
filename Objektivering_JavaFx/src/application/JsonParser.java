@@ -1,12 +1,10 @@
 package application;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,45 +12,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
-
 public class JsonParser {
-
-	File file = new File("src/application/sample.json"); 
 	
-	Scanner sc;
-	
-	ArrayList<OrderBean> orders = new ArrayList<OrderBean>();
-	
-	
-	
-	
-	public void test() {
-		
-		System.out.println(file.toString());
-	}
-	
-	
-	public String jsonFileRaw() {
-		
-		String line ="";
-		
-		try {
-			sc = new Scanner(file);
-			while(sc.hasNext()) {
-				
-				line += sc.nextLine() + "\n";
-			}			
-			
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-		}
-		
-		return line;
-	}
-	
-	
-	public ArrayList<OrderBean> parsJson() {
+	public ArrayList<OrderBean> parsJson(String filePath) {
 		
 		ArrayList<OrderBean> orderList = new ArrayList<OrderBean>();
 		
@@ -60,7 +22,7 @@ public class JsonParser {
 		
 		try {
 			
-			Reader reader = new FileReader("src/application/sample.json");
+			Reader reader = new FileReader(filePath);
 			
 			JSONParser parser = new JSONParser();
 			

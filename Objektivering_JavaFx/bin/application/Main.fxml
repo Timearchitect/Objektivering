@@ -3,17 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
    <children>
       <Text fx:id="filePathText" layoutX="119.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="242.93670654296875" />
-      <Button fx:id="parseJson" layoutX="119.0" layoutY="20.0" mnemonicParsing="false" onAction="#parseJson" prefHeight="26.0" prefWidth="88.0" text="JSON" />
-      <Button fx:id="parseCSV" layoutX="560.0" layoutY="20.0" mnemonicParsing="false" onAction="#praseCsv" prefHeight="26.0" prefWidth="88.0" text="CSV" />
-      <Button fx:id="testBtn" layoutX="740.0" layoutY="21.0" mnemonicParsing="false" onAction="#test" text="test" />
-      <TableView fx:id="table" layoutX="7.0" layoutY="61.0" prefHeight="358.0" prefWidth="602.0">
+      <TableView fx:id="table" layoutX="14.0" layoutY="104.0" prefHeight="315.0" prefWidth="765.0">
         <columns>
           <TableColumn fx:id="orderDate" prefWidth="75.0" text="OrderDate" />
           <TableColumn fx:id="region" prefWidth="75.0" text="Region" />
@@ -25,7 +21,8 @@
           <TableColumn fx:id="total" prefWidth="75.0" text="Total" />
         </columns>
       </TableView>
-      <TextArea fx:id="textArea" layoutX="614.0" layoutY="61.0" prefHeight="358.0" prefWidth="169.0" />
-      <Button fx:id="parseXML" layoutX="334.0" layoutY="20.0" mnemonicParsing="false" onAction="#parseXml" prefHeight="26.0" prefWidth="78.0" text="XML" />
+      <Button fx:id="btnFile" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnFileAction" text="Select File" />
+      <Text fx:id="filePathText" layoutX="119.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="242.9367065429687" />
+      <Button fx:id="btnClear" layoutX="23.0" layoutY="50.0" mnemonicParsing="false" onAction="#clear" text="Clear" />
    </children>
 </AnchorPane>
