@@ -3,6 +3,7 @@ package application;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -11,31 +12,22 @@ import com.opencsv.exceptions.CsvValidationException;
 public class CsvParser {
 
 	
-	public void parseCsv() throws CsvValidationException, IOException{
+	public ArrayList<OrderBean> parseCsv(){
+		
+		ArrayList<OrderBean> orderList = new ArrayList<OrderBean>();
 	
-		FileReader file = new FileReader("src/application/sample.csv");		
+		try (
+				FileReader file = new FileReader("src/application/sample.csv")) {
+				List<OrderBean> orders = new CsvToBeanBuilder<OrderBean>(file).withType(OrderBean.class).build().parse();
+				orderList.add((OrderBean) orders);
+
+				
+		} catch (IOException e) {
+		    System.out.println("Error");
+		}	
 		
-		List<OrderBean> orders = new CsvToBeanBuilder<OrderBean>(file).withType(OrderBean.class).build().parse();
-		
-		for (OrderBean order: orders) {
-			System.out.println(
-					order.getOrderDate()
-					+ " " +
-					order.getRegion()
-					+ " " +
-					order.getRep1()
-					+ " " +
-					order.getRep2()
-					+ " " +
-					order.getItem()
-					+ " " +
-					order.getUnits()
-					+ " " +
-					order.getUnitCost()
-					+ " " +
-					order.getTotal());
-		}
-		
+		return orderList;
+
 	}
 
 }

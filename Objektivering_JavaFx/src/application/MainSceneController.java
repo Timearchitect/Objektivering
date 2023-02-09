@@ -2,7 +2,9 @@ package application;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -45,100 +47,41 @@ public class MainSceneController {
 	
 	ObservableList<OrderBean> jsonList = FXCollections.observableArrayList(jsonParser.parsJson());
 	
-
-	public void parseJson() {
-		
-		System.out.println(table.getHeight());
-		
-		int size = jsonList.size();
-		
-		table.getItems().clear();
-		
-		for (int i = 0; i < jsonParser.parsJson().size(); i++) {
-
-			table.getItems().add(new OrderBean(
-					jsonParser.parsJson().get(i).getOrderDate(),
-					jsonParser.parsJson().get(i).getRegion(),
-					jsonParser.parsJson().get(i).getRep1(),
-					jsonParser.parsJson().get(i).getRep2(),
-					jsonParser.parsJson().get(i).getItem(),
-					jsonParser.parsJson().get(i).getUnits(),
-					jsonParser.parsJson().get(i).getUnitCost(),
-					jsonParser.parsJson().get(i).getTotal()));
-			
-//			orderDate.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getOrderDate()));
-//			region.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRegion()));
-//			rep1.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep1()));
-//			rep2.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getRep2()));
-//			item.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getItem()));
-//			units.setCellValueFactory(new PropertyValueFactory<OrderBean, Long>(jsonParser.parsJson().get(i).getUnits().toString()));
-//			unitCost.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getUnitCost()));
-//			total.setCellValueFactory(new PropertyValueFactory<OrderBean, String>(jsonParser.parsJson().get(i).getTotal()));
-//			
-//			table.getColumns().add(orderDate);
-//			table.getColumns().add(region);
-//			table.getColumns().add(rep1);
-//			table.getColumns().add(rep2);
-//			table.getColumns().add(item);
-//			table.getColumns().add(units);
-//			table.getColumns().add(unitCost);
-//			table.getColumns().add(total);
-//			
-//			table.getItems().add(i, jsonParser.parsJson().get(i));
-			
-		}
-
-	}
-
+    @FXML
+    public void initialize() {
+        orderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        region.setCellValueFactory(new PropertyValueFactory<>("region"));
+        rep1.setCellValueFactory(new PropertyValueFactory<>("rep1"));
+        rep2.setCellValueFactory(new PropertyValueFactory<>("rep2"));
+        item.setCellValueFactory(new PropertyValueFactory<>("item"));
+        units.setCellValueFactory(new PropertyValueFactory<>("units"));
+        unitCost.setCellValueFactory(new PropertyValueFactory<>("unitCost"));
+        total.setCellValueFactory(new PropertyValueFactory<>("total"));
+    }
+    
+    
+    public void parseJson() {
+        table.getItems().clear();
+        ArrayList<OrderBean> orders = jsonParser.parsJson();
+        orders.forEach(order -> table.getItems().add(order));
+        table.refresh();
+    }
+    
+    public void parseXml() {
+    	 table.getItems().clear();
+    	 ArrayList<OrderBean> orders = xmlParser.parseXml();
+    	 orders.forEach(order -> table.getItems().add(order));
+    	 table.refresh();
+    }
+    
+    public void praseCsv() {
+    	 table.getItems().clear();
+    	 ArrayList<OrderBean> orders = csvParser.parseCsv();
+    	 orders.forEach(order -> table.getItems().add(order));
+    	 table.refresh();
+    }
+   
 	public void test() throws CsvValidationException, IOException {
 		
-		//ArrayList<OrderBean> jsonOrders = jsonParser.parsJson();
-		//csvParser.parseCsv();
-		ArrayList<OrderBean> xmlOrders = xmlParser.xmlBuilder();
-		//System.out.println(jsonOrders.get(0).getOrderDate());
-		
-		for (int i = 0; i < xmlOrders.size(); i++) {
-			
-			//System.out.println(i);
-			
-			textArea.appendText(
-					xmlParser.xmlBuilder().get(i).getOrderDate());
-			
-			
-//			textArea.appendText(
-//					jsonParser.parsJson().get(i).getOrderDate() + "\n" +
-//					jsonParser.parsJson().get(i).getRegion() + "\n" +
-//					jsonParser.parsJson().get(i).getRep1() + "\n" +
-//					jsonParser.parsJson().get(i).getRep2() + "\n" +
-//					jsonParser.parsJson().get(i).getItem() + "\n" +
-//					jsonParser.parsJson().get(i).getUnits() + "\n" +
-//					jsonParser.parsJson().get(i).getUnitCost() + "\n" +
-//					jsonParser.parsJson().get(i).getTotal());
-//		}
-		
-	}
-
-//	public void getFile(ActionEvent event) {
-//		
-//		FileChooser fc = new FileChooser();
-//		File selectedFile = fc.showOpenDialog(null);
-//		
-//		String filePath;
-//		
-//		if (selectedFile != null) {
-//			filePathText.setText(selectedFile.getAbsolutePath().toString());
-//			System.out.println("File: " + selectedFile.getName());
-//		} else {
-//			filePathText.setText("No file selected");
-//			System.out.println("No file");
-//		}		
-//	}
-//	
-//	public void parseFile(ActionEvent event) {
-//		
-//		System.out.println("Path: " + filePathText.getText());
-//		
-//	}
-
 	}
 }

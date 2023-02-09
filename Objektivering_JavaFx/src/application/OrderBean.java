@@ -20,8 +20,7 @@ public class OrderBean {
 			Long units,
 			String unitCost,
 			String total) 
-	{
-		
+	{	
 		super();
 		this.orderDate = orderDate;
 		this.region = region;
@@ -33,6 +32,18 @@ public class OrderBean {
 		this.total = total;
 	}	
 	
+	public OrderBean() {
+		super();
+		this.orderDate = null;
+		this.region = null;
+		this.rep1 = null;
+		this.rep2 = null;
+		this.item = null;
+		this.units = null;
+		this.unitCost = null;
+		this.total = null;
+	}
+
 	public String getOrderDate() {
 		return orderDate;
 	}

@@ -2,10 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,19 +17,15 @@ import org.xml.sax.SAXException;
 public class XmlParser {
 	
 	
-	public ArrayList<OrderBean> xmlBuilder() {
-		
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	public ArrayList<OrderBean> parseXml() {
 		
 		ArrayList<OrderBean> orderList = new ArrayList<OrderBean>();
 		
-		OrderBean currentOrder = null;
-		
 		try {
 			
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			
-			Document doc = builder.parse(new File("C:\\Users\\lindb\\eclipse-workspace\\Objektivering_JavaFx\\src\\application\\sample.xml"));
+			Document doc = builder.parse(new File("src/application/sample.xml"));
 			
 			doc.getDocumentElement().normalize();
 			
@@ -42,12 +35,11 @@ public class XmlParser {
 				
 				Node row = rowList.item(i);
 				
-				
 				if (row.getNodeType() == Node.ELEMENT_NODE) {
 				
 				Element rowElement = (Element) row;
-				
 				NodeList rowData = row.getChildNodes();
+				OrderBean currentOrder = new OrderBean();
 				
 				for (int j = 0; j < rowData.getLength(); j++) {
 					
@@ -57,25 +49,38 @@ public class XmlParser {
 
 						Element dataElement = (Element) data;
 						
-						// System.out.println("	" + dataElement.getTagName() + ": " + dataElement.getTextContent());
-						
-						 currentOrder = new OrderBean(
-								 dataElement.getTextContent(),
-								 dataElement.getTextContent(),
-								 dataElement.getTextContent(),
-								 dataElement.getTextContent(),
-								 dataElement.getTextContent(),
-								 Long.parseLong(dataElement.getTextContent()),
-								 dataElement.getTextContent(),
-								 dataElement.getTextContent());
-						
-						 orderList.add(currentOrder);
-						 
-					} 
-					
-					
+						switch (dataElement.getTagName()) {
+		                case "OrderDate":
+		                  currentOrder.setOrderDate(dataElement.getTextContent());
+		                  break;
+		                case "Region":
+		                  currentOrder.setRegion(dataElement.getTextContent());
+		                  break;
+		                case "Rep1":
+		                  currentOrder.setRep1(dataElement.getTextContent());
+		                  break;
+		                case "Rep2":
+		                  currentOrder.setRep2(dataElement.getTextContent());
+		                  break;
+		                case "Item":
+		                  currentOrder.setItem(dataElement.getTextContent());
+		                  break;
+		                case "Units":
+		                  currentOrder.setUnits(Long.parseLong(dataElement.getTextContent()));
+		                  break;
+		                case "UnitCost":
+		                  currentOrder.setUnitCost(dataElement.getTextContent());
+		                  break;
+		                case "Total":
+		                  currentOrder.setTotal(dataElement.getTextContent());
+		                  break;
+		                default:
+		                  break;
+		              }
+					} 	
 				}
-					
+	
+				orderList.add(currentOrder);
 		
 				}
 			}
@@ -92,7 +97,6 @@ public class XmlParser {
 		}
 		
 		return orderList;
-		
 		
 	}
 }

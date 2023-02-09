@@ -26,5 +26,6 @@
         </columns>
       </TableView>
       <TextArea fx:id="textArea" layoutX="614.0" layoutY="61.0" prefHeight="358.0" prefWidth="169.0" />
+      <Button fx:id="parseXML" layoutX="334.0" layoutY="20.0" mnemonicParsing="false" onAction="#parseXml" prefHeight="26.0" prefWidth="78.0" text="XML" />
    </children>
 </AnchorPane>
