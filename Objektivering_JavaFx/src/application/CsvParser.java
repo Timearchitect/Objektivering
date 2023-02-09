@@ -16,10 +16,14 @@ public class CsvParser {
 		
 		ArrayList<OrderBean> orderList = new ArrayList<OrderBean>();
 	
-		try (
-				FileReader file = new FileReader("src/application/sample.csv")) {
+		try (FileReader file = new FileReader("src/application/sample.csv"))
+				{
+			
 				List<OrderBean> orders = new CsvToBeanBuilder<OrderBean>(file).withType(OrderBean.class).build().parse();
-				orderList.add((OrderBean) orders);
+				
+				for (OrderBean order : orders) {
+				    orderList.add(order);
+				}
 
 				
 		} catch (IOException e) {

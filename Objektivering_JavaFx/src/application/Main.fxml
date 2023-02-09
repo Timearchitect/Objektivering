@@ -11,7 +11,7 @@
    <children>
       <Text fx:id="filePathText" layoutX="119.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="242.93670654296875" />
       <Button fx:id="parseJson" layoutX="119.0" layoutY="20.0" mnemonicParsing="false" onAction="#parseJson" prefHeight="26.0" prefWidth="88.0" text="JSON" />
-      <Button fx:id="parseCSV" layoutX="560.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="CSV" />
+      <Button fx:id="parseCSV" layoutX="560.0" layoutY="20.0" mnemonicParsing="false" onAction="#praseCsv" prefHeight="26.0" prefWidth="88.0" text="CSV" />
       <Button fx:id="testBtn" layoutX="740.0" layoutY="21.0" mnemonicParsing="false" onAction="#test" text="test" />
       <TableView fx:id="table" layoutX="7.0" layoutY="61.0" prefHeight="358.0" prefWidth="602.0">
         <columns>
