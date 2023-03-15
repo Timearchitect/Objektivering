@@ -16,7 +16,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-
+ 
 public class Main extends Application {
 	
 	@Override
